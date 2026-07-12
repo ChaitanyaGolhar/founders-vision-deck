@@ -28,7 +28,6 @@
     }
     
     .slide-frame-wrapper {
-      position: relative; /* Required for the overlay */
       width: 1920px;
       height: 1080px;
       transform-origin: center center;
@@ -37,16 +36,6 @@
       transition: opacity 0.2s ease;
     }
     
-    /* Invisible overlay to catch mobile swipes over the iframe */
-    .swipe-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-    }
-
     iframe {
       width: 100%;
       height: 100%;
@@ -61,7 +50,10 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      z-index: 20; /* Keep controls clickable above everything */
+      
+      /* FIX 1: Guarantees the giant 1920x1080 bounding box won't cover these buttons */
+      position: relative; 
+      z-index: 100; 
     }
     
     button {
@@ -97,8 +89,6 @@
 
   <div class="stage">
     <div class="slide-frame-wrapper" id="frameWrapper">
-      <!-- The invisible layer that captures finger swipes -->
-      <div class="swipe-overlay" id="swipeOverlay"></div>
       <iframe id="slideFrame" src="slides/slide_01.html" scrolling="no"></iframe>
     </div>
   </div>
@@ -130,24 +120,11 @@
     const currentNum = document.getElementById('currentNum');
     document.getElementById('totalNum').textContent = slides.length;
 
-    function goToSlide(index) {
-      if (index < 0 || index >= slides.length) return;
-      currentSlide = index;
-      
-      frameWrapper.classList.add('loading');
-      frame.src = slides[index];
-      frame.onload = () => frameWrapper.classList.remove('loading');
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-      currentNum.textContent = index + 1;
-      prevBtn.disabled = index === 0;
-      nextBtn.disabled = index === slides.length - 1;
-    }
-
-    function nextSlide() { goToSlide(currentSlide + 1); }
-    function prevSlide() { goToSlide(currentSlide - 1); }
-
-    // Keyboard controls
-    document.addEventListener('keydown', (e) => {
+    // FIX 2: Extracted keyboard logic into a standalone function
+    function handleKeydown(e) {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
         e.preventDefault(); nextSlide();
       }
@@ -159,36 +136,53 @@
         if (!document.fullscreenElement) document.documentElement.requestFullscreen();
         else document.exitFullscreen();
       }
-    });
-
-    // --- NEW: Mobile Swipe Logic ---
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const swipeOverlay = document.getElementById('swipeOverlay');
-
-    swipeOverlay.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    swipeOverlay.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-      const swipeThreshold = 50; // Minimum distance (in pixels) to be considered a swipe
-      
-      if (touchEndX < touchStartX - swipeThreshold) {
-        // Swiped Left -> Go to Next Slide
-        nextSlide();
-      }
-      if (touchEndX > touchStartX + swipeThreshold) {
-        // Swiped Right -> Go to Previous Slide
-        prevSlide();
-      }
     }
-    // -------------------------------
+
+    // Main window listens for keyboard
+    document.addEventListener('keydown', handleKeydown);
+
+    function goToSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      currentSlide = index;
+      
+      frameWrapper.classList.add('loading');
+      frame.src = slides[index];
+      
+      frame.onload = () => {
+        frameWrapper.classList.remove('loading');
+        
+        try {
+          const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+          
+          // Inject swipe listeners
+          iframeDoc.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+
+          iframeDoc.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) nextSlide();
+            if (touchEndX > touchStartX + swipeThreshold) prevSlide();
+          }, { passive: true });
+          
+          // FIX 3: Inject keyboard listener directly into the slide 
+          // so it catches key presses even when the slide has focus
+          iframeDoc.addEventListener('keydown', handleKeydown);
+          
+          frame.focus(); 
+        } catch (err) {
+          console.warn("Could not attach listeners to iframe (likely testing locally with file:// protocol). Swipe/Keyboard inside iframe may not work unless running on a local server:", err);
+        }
+      };
+
+      currentNum.textContent = index + 1;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === slides.length - 1;
+    }
+
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
 
     function scaleFrame() {
       const availW = window.innerWidth - 40; 
