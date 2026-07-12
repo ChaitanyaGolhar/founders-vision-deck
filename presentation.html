@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Presentation Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: #0f1115;
+      color: #fff;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: calc(100vh - 70px);
+    }
+    
+    /* Increased to full 1080p resolution */
+    .slide-frame-wrapper {
+      width: 1920px;
+      height: 1080px;
+      transform-origin: center center;
+      background: white; 
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      transition: opacity 0.2s ease;
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden; /* Extra protection against scrollbars */
+    }
+    
+    .loading { opacity: 0.4; }
+
+    .controls {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    button {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    
+    button:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    button:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+    
+    .counter {
+      font-family: monospace;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="slide-frame-wrapper" id="frameWrapper">
+      <!-- Added scrolling="no" to strictly prevent the scroller -->
+      <iframe id="slideFrame" src="slides/slide_01.html" scrolling="no"></iframe>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="prevBtn" onclick="prevSlide()">← Prev</button>
+    <div class="counter"><span id="currentNum">1</span> / <span id="totalNum">8</span></div>
+    <button id="nextBtn" onclick="nextSlide()">Next →</button>
+  </div>
+
+  <script>
+    const slides = [
+      'slides/slide_01.html',
+      'slides/slide_02.html',
+      'slides/slide_03.html',
+      'slides/slide_04.html',
+      'slides/slide_05.html',
+      'slides/slide_06.html',
+      'slides/slide_07.html',
+      'slides/slide_08.html'
+    ];
+
+    let currentSlide = 0;
+    
+    const frame = document.getElementById('slideFrame');
+    const frameWrapper = document.getElementById('frameWrapper');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentNum = document.getElementById('currentNum');
+    document.getElementById('totalNum').textContent = slides.length;
+
+    function goToSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      currentSlide = index;
+      
+      frameWrapper.classList.add('loading');
+      frame.src = slides[index];
+      frame.onload = () => frameWrapper.classList.remove('loading');
+
+      currentNum.textContent = index + 1;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === slides.length - 1;
+    }
+
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault(); nextSlide();
+      }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault(); prevSlide();
+      }
+      if (e.key === 'f' || e.key === 'F') { 
+        e.preventDefault(); 
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      }
+    });
+
+    function scaleFrame() {
+      const availW = window.innerWidth; 
+      const availH = window.innerHeight - 60; 
+      const scale = Math.min(availW / 1280, availH / 720, 2);
+      frameWrapper.style.transform = `scale(${scale})`;
+    }
+
+    window.addEventListener('resize', scaleFrame);
+    
+    scaleFrame();
+    goToSlide(0);
+  </script>
+
+</body>
+</html>
