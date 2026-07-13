@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>v2.0 — Slide 15 — Why Now</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--color-primary:#0EA5E9;--color-secondary:#6366F1;--color-accent:#22D3EE;--color-black:#000000;}
+body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFFF;color:var(--color-black);}
+.font-display{font-family:'Space Grotesk',sans-serif;}.font-mono{font-family:'JetBrains Mono',monospace;}
+.slide-container{width:1280px;height:720px;position:relative;overflow:hidden;background-color:#FFFFFF;display:flex;flex-direction:column;}
+.grid-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.vertical-rl{writing-mode:vertical-rl;transform:rotate(180deg);}
+.corner-marker{position:absolute;width:12px;height:12px;border:2px solid var(--color-black);z-index:20;}
+.corner-tl{top:24px;left:24px;border-right:none;border-bottom:none;}.corner-tr{top:24px;right:24px;border-left:none;border-bottom:none;}
+.corner-bl{bottom:24px;left:24px;border-right:none;border-top:none;}.corner-br{bottom:24px;right:24px;border-left:none;border-top:none;}
+.text-electric-blue{color:var(--color-primary);}.bg-electric-blue{background-color:var(--color-primary);}
+.observation-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed #E5E7EB;}
+.observation-item:last-child{border-bottom:none;}
+</style>
+</head>
+<body>
+<div class="slide-container">
+<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern height="64" id="smallGrid" patternUnits="userSpaceOnUse" width="64"><path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"/></pattern></defs><rect fill="url(#smallGrid)" height="100%" width="100%"/></svg>
+<div class="corner-marker corner-tl"></div><div class="corner-marker corner-tr"></div><div class="corner-marker corner-bl"></div><div class="corner-marker corner-br"></div>
+
+<div class="absolute top-0 left-0 w-full px-16 py-10 z-20 flex justify-between items-center">
+  <div class="flex items-center"><div class="w-5 h-5 bg-black mr-3"></div><p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision <span class="text-electric-blue">v2.0</span></p></div>
+  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>ACT_06 — WHY NOW</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">OBSERVATIONS_NOT_STATISTICS</span></div>
+</div>
+
+<div class="relative z-10 flex flex-1 px-16 pt-24 pb-20">
+  <div class="w-1/12 flex justify-center h-full relative">
+    <div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
+    <h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right:-2rem;">WHY NOW</h2>
+    <div class="absolute right-[-2px] top-32 w-1 h-16 bg-electric-blue"></div>
+  </div>
+  <div class="w-11/12 pl-12 flex flex-col justify-center">
+    <div class="mb-4 pl-2">
+      <p class="font-display text-xl font-medium leading-tight mb-0.5">The world changed. Career discovery didn't.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;">
+      <!-- Left: Students Now -->
+      <div class="bg-white border-2 border-black p-6 flex flex-col" style="box-shadow:8px 8px 0px var(--color-primary);">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-electric-blue flex items-center justify-center"><i class="fas fa-rocket text-white"></i></div>
+          <div>
+            <p class="font-mono text-xs text-electric-blue uppercase tracking-widest">// STUDENTS_NOW</p>
+            <h3 class="font-display text-xl font-bold">The world changed</h3>
+          </div>
+        </div>
+        <div class="space-y-1">
+          <div class="observation-item"><i class="fas fa-robot text-electric-blue text-sm w-5"></i><p class="font-manrope text-sm text-gray-700">Build AI projects</p></div>
+          <div class="observation-item"><i class="fas fa-trophy text-electric-blue text-sm w-5"></i><p class="font-manrope text-sm text-gray-700">Participate in hackathons</p></div>
+          <div class="observation-item"><i class="fab fa-github text-electric-blue text-sm w-5"></i><p class="font-manrope text-sm text-gray-700">Contribute to open source</p></div>
+          <div class="observation-item"><i class="fas fa-globe text-electric-blue text-sm w-5"></i><p class="font-manrope text-sm text-gray-700">Learn publicly</p></div>
+        </div>
+        <p class="font-mono text-xs text-electric-blue mt-auto pt-3 border-t border-gray-200">// MORE_PUBLIC_WORK_THAN_EVER</p>
+      </div>
+
+      <!-- Right: Discovery Hasn't Changed -->
+      <div class="bg-gray-900 text-white border-2 border-black p-6 flex flex-col" style="box-shadow:8px 8px 0px var(--color-primary);">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gray-700 flex items-center justify-center"><i class="fas fa-pause text-cyan-400"></i></div>
+          <div>
+            <p class="font-mono text-xs text-cyan-400 uppercase tracking-widest">// DISCOVERY_STUCK</p>
+            <h3 class="font-display text-xl font-bold">Discovery didn't</h3>
+          </div>
+        </div>
+        <div class="space-y-1">
+          <div class="observation-item" style="border-color:#374151;"><i class="fab fa-whatsapp text-cyan-400 text-sm w-5"></i><p class="font-manrope text-sm text-gray-300">Still travels through WhatsApp</p></div>
+          <div class="observation-item" style="border-color:#374151;"><i class="fas fa-user-friends text-cyan-400 text-sm w-5"></i><p class="font-manrope text-sm text-gray-300">Still flows through friend circles</p></div>
+          <div class="observation-item" style="border-color:#374151;"><i class="fas fa-network-wired text-cyan-400 text-sm w-5"></i><p class="font-manrope text-sm text-gray-300">Still depends on existing networks</p></div>
+          <div class="observation-item" style="border-color:#374151;"><i class="fas fa-dice text-cyan-400 text-sm w-5"></i><p class="font-manrope text-sm text-gray-300">Still distributed by chance</p></div>
+        </div>
+        <p class="font-mono text-xs text-cyan-400 mt-auto pt-3 border-t border-gray-800">// SAME_PIPE_DIFFERENT_ERA</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom statement -->
+<div class="absolute bottom-14 left-0 right-0 px-16 pb-2 z-20">
+  <div class="bg-electric-blue text-white px-8 py-3 flex items-center justify-between" style="box-shadow:6px 6px 0px var(--color-black);">
+    <p class="font-display text-lg font-medium">The world changed. <span class="font-bold">Career discovery didn't.</span></p>
+    <p class="font-mono text-xs text-blue-900">// THE_TIMING_GAP</p>
+  </div>
+</div>
+
+<div class="absolute bottom-0 left-0 w-full h-12 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
+  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>WHY_NOW — OBSERVATIONS_OVER_STATISTICS</div>
+  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">15</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
+</div>
+</div>
+</body>
+</html>

@@ -3,448 +3,111 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Why Now - 2026 Inflection Point</title>
+<title>v2.0 — Slide 7 — The Hidden Cost</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-    :root {
-        --color-primary: #0EA5E9;
-        --color-secondary: #6366F1;
-        --color-accent: #22D3EE;
-        --color-black: #000000;
-        --color-dark: #0F172A;
-        --color-light: #F8FAFC;
-    }
-    * { box-sizing: border-box; }
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Manrope', sans-serif;
-        background-color: #FFFFFF;
-        color: var(--color-black);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-    }
-    .font-display { font-family: 'Space Grotesk', sans-serif; }
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-    .slide-container {
-        width: 1280px;
-        height: 720px;
-        position: relative;
-        overflow: hidden;
-        background-color: #FFFFFF;
-        display: flex;
-        flex-direction: column;
-    }
-    .grid-lines {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        z-index: 0;
-        pointer-events: none;
-    }
-    .shadow-hard {
-        box-shadow: 8px 8px 0px var(--color-black);
-    }
-    .shadow-hard-sm {
-        box-shadow: 4px 4px 0px var(--color-black);
-    }
-    .vertical-rl {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-    }
-    .corner-marker {
-        position: absolute;
-        width: 12px; height: 12px;
-        border: 2px solid var(--color-black);
-        z-index: 20;
-    }
-    .corner-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
-    .corner-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
-    .corner-bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
-    .corner-br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
-    .metric-card {
-        background-color: #FFFFFF;
-        border: 1px solid var(--color-black);
-        transition: transform 0.2s ease;
-        flex-shrink: 0;
-    }
-    .metric-card:hover {
-        transform: translateX(4px);
-        border-color: var(--color-primary);
-    }
-    .chart-container {
-        background-color: #FFFFFF;
-        border: 1px solid var(--color-black);
-        box-shadow: 6px 6px 0px var(--color-black);
-        padding: 12px;
-        position: relative;
-        flex-shrink: 0;
-    }
-    .chart-tag {
-        position: absolute;
-        top: 0; right: 0;
-        background-color: var(--color-black);
-        color: #FFFFFF;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem;
-        padding: 2px 8px;
-        line-height: 1.4;
-    }
-    .text-electric-blue { color: var(--color-primary); }
-    .bg-electric-blue { background-color: var(--color-primary); }
-    .border-electric-blue { border-color: var(--color-primary); }
-
-    /* Header */
-    .slide-header {
-        height: 56px;
-        padding: 0 60px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-        z-index: 20;
-        flex-shrink: 0;
-        border-bottom: 1px solid #F1F5F9;
-    }
-
-    /* Main content area */
-    .slide-main {
-        flex: 1;
-        display: flex;
-        position: relative;
-        z-index: 10;
-        overflow: hidden;
-        padding: 0 60px;
-    }
-
-    /* Left vertical sidebar */
-    .left-sidebar {
-        width: 48px;
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        padding-top: 32px;
-    }
-    .left-sidebar .sidebar-line {
-        position: absolute;
-        right: 0; top: 32px; bottom: 0;
-        width: 1px;
-        background-color: #E2E8F0;
-    }
-    .left-sidebar .sidebar-accent {
-        position: absolute;
-        right: -1px; top: 50%;
-        width: 3px; height: 48px;
-        background-color: var(--color-primary);
-        transform: translateY(-50%);
-    }
-
-    /* Content split */
-    .content-area {
-        flex: 1;
-        display: flex;
-        padding-left: 40px;
-        gap: 32px;
-        min-height: 0;
-    }
-
-    /* Left column - metrics */
-    .col-left {
-        width: 38%;
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* Right column - charts */
-    .col-right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-        min-height: 0;
-    }
-
-    /* Footer */
-    .slide-footer {
-        height: 48px;
-        padding: 0 60px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-top: 1px solid #F1F5F9;
-        position: relative;
-        z-index: 20;
-        flex-shrink: 0;
-        background-color: #FFFFFF;
-    }
-
-    .chart-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-
-    .inflection-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #000000;
-        color: #FFFFFF;
-        border: 1px solid #000000;
-        box-shadow: 6px 6px 0px #000000;
-        padding: 12px;
-        position: relative;
-    }
+:root{--color-primary:#0EA5E9;--color-secondary:#6366F1;--color-accent:#22D3EE;--color-black:#000000;--color-light:#F8FAFC;}
+body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFFF;color:var(--color-black);}
+.font-display{font-family:'Space Grotesk',sans-serif;}.font-mono{font-family:'JetBrains Mono',monospace;}
+.slide-container{width:1280px;height:720px;position:relative;overflow:hidden;background-color:#FFFFFF;display:flex;flex-direction:column;}
+.grid-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.card-tech{background-color:#FFFFFF;border:1px solid var(--color-black);box-shadow:6px 6px 0px var(--color-black);position:relative;overflow:hidden;}
+.card-tech::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background-color:var(--color-primary);}
+.card-final{background-color:#1E293B!important;color:white;border-color:#1E293B!important;box-shadow:6px 6px 0px var(--color-primary)!important;}
+.card-final::before{background-color:var(--color-accent)!important;}
+.vertical-rl{writing-mode:vertical-rl;transform:rotate(180deg);}
+.corner-marker{position:absolute;width:12px;height:12px;border:2px solid var(--color-black);z-index:20;}
+.corner-tl{top:24px;left:24px;border-right:none;border-bottom:none;}.corner-tr{top:24px;right:24px;border-left:none;border-bottom:none;}
+.corner-bl{bottom:24px;left:24px;border-right:none;border-top:none;}.corner-br{bottom:24px;right:24px;border-left:none;border-top:none;}
+.text-electric-blue{color:var(--color-primary);}.bg-electric-blue{background-color:var(--color-primary);}
 </style>
 </head>
 <body>
 <div class="slide-container">
-    <!-- Grid Background -->
-    <svg class="grid-lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <pattern id="smallGrid" width="64" height="64" patternUnits="userSpaceOnUse">
-                <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"/>
-            </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#smallGrid)"/>
-    </svg>
+<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern height="64" id="smallGrid" patternUnits="userSpaceOnUse" width="64"><path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"/></pattern></defs><rect fill="url(#smallGrid)" height="100%" width="100%"/></svg>
+<div class="corner-marker corner-tl"></div><div class="corner-marker corner-tr"></div><div class="corner-marker corner-bl"></div><div class="corner-marker corner-br"></div>
 
-    <!-- Corner Markers -->
-    <div class="corner-marker corner-tl"></div>
-    <div class="corner-marker corner-tr"></div>
-    <div class="corner-marker corner-bl"></div>
-    <div class="corner-marker corner-br"></div>
-
-    <!-- Header -->
-    <div class="slide-header">
-        <div style="display:flex; align-items:center;">
-            <div style="width:18px; height:18px; background:#000; margin-right:12px;"></div>
-            <p class="font-mono" style="font-size:11px; letter-spacing:0.15em; font-weight:700; color:#000; text-transform:uppercase; margin:0;">Founder Vision</p>
-        </div>
-        <div style="display:flex; align-items:center; gap:8px;" class="font-mono" >
-            <span style="font-size:11px; color:#94A3B8;">DATA_VISUALIZATION</span>
-            <span style="font-size:11px; color:#0EA5E9;">::2026_INFLECTION</span>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="slide-main">
-        <!-- Left Sidebar with Vertical Text -->
-        <div class="left-sidebar">
-            <div class="sidebar-line"></div>
-            <div class="sidebar-accent"></div>
-            <h2 class="vertical-rl font-display" style="font-size:52px; font-weight:700; color:#000; opacity:0.07; white-space:nowrap; letter-spacing:-0.03em; position:relative; z-index:1; margin:0;">
-                WHY NOW
-            </h2>
-        </div>
-
-        <!-- Content Area -->
-        <div class="content-area">
-            <!-- Left Column: Text + Metrics -->
-            <div class="col-left">
-                <div style="margin-bottom:20px;">
-                    <p class="font-mono" style="font-size:11px; color:#0EA5E9; margin:0 0 6px 0;">&lt;timing&gt;</p>
-                    <h3 class="font-display" style="font-size:22px; font-weight:700; line-height:1.2; margin:0 0 10px 0;">
-                        Why 2026 is the moment
-                    </h3>
-                    <p style="font-size:13px; color:#64748B; line-height:1.6; margin:0;">
-                        Four converging forces make talent visibility no longer optional—it's inevitable. Timing is what separates a good idea from a great startup.
-                    </p>
-                </div>
-
-                <div style="display:flex; flex-direction:column; gap:10px;">
-                    <!-- Metric 1 -->
-                    <div class="metric-card" style="padding:10px 12px; display:flex; align-items:center; justify-content:space-between;">
-                        <div>
-                            <div class="font-display" style="font-size:24px; font-weight:700; color:#0EA5E9; line-height:1;">+340%</div>
-                            <div class="font-mono" style="font-size:9px; color:#94A3B8; text-transform:uppercase; margin-top:3px;">Public Student Work Growth</div>
-                        </div>
-                        <div style="width:32px; height:32px; border-radius:50%; background:#F8FAFC; display:flex; align-items:center; justify-content:center; border:1px solid #E2E8F0; flex-shrink:0;">
-                            <i class="fas fa-code" style="font-size:12px; color:#0EA5E9;"></i>
-                        </div>
-                    </div>
-                    <!-- Metric 2 -->
-                    <div class="metric-card" style="padding:10px 12px; display:flex; align-items:center; justify-content:space-between;">
-                        <div>
-                            <div class="font-display" style="font-size:24px; font-weight:700; color:#000; line-height:1;">78%</div>
-                            <div class="font-mono" style="font-size:9px; color:#94A3B8; text-transform:uppercase; margin-top:3px;">Colleges Pressured on Placements</div>
-                        </div>
-                        <div style="width:32px; height:32px; border-radius:50%; background:#F8FAFC; display:flex; align-items:center; justify-content:center; border:1px solid #E2E8F0; flex-shrink:0;">
-                            <i class="fas fa-graduation-cap" style="font-size:12px; color:#000;"></i>
-                        </div>
-                    </div>
-                    <!-- Metric 3 -->
-                    <div class="metric-card" style="padding:10px 12px; display:flex; align-items:center; justify-content:space-between;">
-                        <div>
-                            <div class="font-display" style="font-size:24px; font-weight:700; color:#6366F1; line-height:1;">5.2x</div>
-                            <div class="font-mono" style="font-size:9px; color:#94A3B8; text-transform:uppercase; margin-top:3px;">AI Skill Growth, Discovery Still Broken</div>
-                        </div>
-                        <div style="width:32px; height:32px; border-radius:50%; background:#F8FAFC; display:flex; align-items:center; justify-content:center; border:1px solid #E2E8F0; flex-shrink:0;">
-                            <i class="fas fa-robot" style="font-size:12px; color:#6366F1;"></i>
-                        </div>
-                    </div>
-                    <!-- Metric 4 -->
-                    <div class="metric-card" style="padding:10px 12px; display:flex; align-items:center; justify-content:space-between;">
-                        <div>
-                            <div class="font-display" style="font-size:24px; font-weight:700; color:#000; line-height:1;">63%</div>
-                            <div class="font-mono" style="font-size:9px; color:#94A3B8; text-transform:uppercase; margin-top:3px;">Recruiters Value Demonstrable Skills</div>
-                        </div>
-                        <div style="width:32px; height:32px; border-radius:50%; background:#F8FAFC; display:flex; align-items:center; justify-content:center; border:1px solid #E2E8F0; flex-shrink:0;">
-                            <i class="fas fa-briefcase" style="font-size:12px; color:#000;"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Charts -->
-            <div class="col-right">
-                <!-- Top Chart: Bar -->
-                <div class="chart-container" style="flex:1; display:flex; flex-direction:column; min-height:0;">
-                    <div class="chart-tag">VISIBILITY_GAP</div>
-                    <h4 class="font-display" style="font-size:13px; font-weight:700; margin:0 0 8px 0;">Talent Created vs. Talent Discovered</h4>
-                    <div class="chart-wrapper">
-                        <canvas id="kpiBarChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Bottom Row: Doughnut + Inflection Box -->
-                <div style="display:flex; gap:12px; height:170px; flex-shrink:0;">
-                    <!-- Doughnut Chart -->
-                    <div class="chart-container" style="width:65%; display:flex; flex-direction:column;">
-                        <div class="chart-tag">WHERE_STUDENTS_BUILD</div>
-                        <h4 class="font-display" style="font-size:13px; font-weight:700; margin:0 0 4px 0;">Public Work Distribution</h4>
-                        <div class="chart-wrapper" style="display:flex; align-items:center; justify-content:center;">
-                            <canvas id="trafficDoughnutChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Inflection Point Box -->
-                    <div class="inflection-box" style="width:35%;">
-                        <i class="fas fa-rocket" style="font-size:28px; color:#0EA5E9; margin-bottom:8px;"></i>
-                        <div class="font-display" style="font-size:32px; font-weight:700; line-height:1;">2026</div>
-                        <div class="font-mono" style="font-size:9px; color:#94A3B8; margin-top:6px; text-align:center; line-height:1.4;">THE INFLECTION<br/>POINT</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="slide-footer">
-        <div class="font-mono" style="font-size:11px; color:#94A3B8; display:flex; align-items:center; gap:8px;">
-            <span style="color:#0EA5E9; font-size:8px;">●</span>
-            TIMING_ANALYSIS_2026
-        </div>
-        <div style="display:flex; align-items:center; gap:16px;">
-            <p class="font-mono" style="font-size:16px; font-weight:700; margin:0;">07</p>
-            <div style="width:48px; height:4px; background:#E2E8F0; border-radius:2px; overflow:hidden;">
-                <div style="height:100%; width:75%; background:#000; border-radius:2px;"></div>
-            </div>
-        </div>
-    </div>
+<div class="absolute top-0 left-0 w-full px-16 py-10 z-20 flex justify-between items-center">
+  <div class="flex items-center"><div class="w-5 h-5 bg-black mr-3"></div><p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision <span class="text-electric-blue">v2.0</span></p></div>
+  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>ACT_02 — COMPOUNDING LOSS</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">EMOTION: DREAD</span></div>
 </div>
 
-<script>
-    Chart.defaults.font.family = "'Manrope', sans-serif";
-    Chart.defaults.color = '#64748B';
+<div class="relative z-10 flex flex-1 px-16 pt-24 pb-20">
+  <div class="w-1/12 flex justify-center h-full relative">
+    <div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
+    <h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right:-2rem;">HIDDEN COST</h2>
+    <div class="absolute right-[-2px] top-32 w-1 h-16 bg-electric-blue"></div>
+  </div>
+  <div class="w-11/12 pl-12 flex flex-col justify-center">
+    <div class="mb-4 pl-2 max-w-3xl">
+      <p class="font-display text-xl font-medium leading-tight mb-0.5">The hidden cost.</p>
+      <p class="font-manrope text-sm text-gray-500">Invisibility compounds. One missed opportunity creates ten more.</p>
+    </div>
 
-    const ctxBar = document.getElementById('kpiBarChart').getContext('2d');
-    new Chart(ctxBar, {
-        type: 'bar',
-        data: {
-            labels: ['2020', '2022', '2024', '2026'],
-            datasets: [
-                {
-                    label: 'Talent Created',
-                    data: [25, 48, 72, 100],
-                    backgroundColor: '#E2E8F0',
-                    borderColor: '#94A3B8',
-                    borderWidth: 1,
-                    barPercentage: 0.6
-                },
-                {
-                    label: 'Talent Discovered',
-                    data: [18, 22, 28, 35],
-                    backgroundColor: '#0EA5E9',
-                    borderColor: '#0284C7',
-                    borderWidth: 1,
-                    barPercentage: 0.6
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            layout: { padding: { top: 4, bottom: 0, left: 0, right: 0 } },
-            plugins: {
-                legend: {
-                    position: 'top',
-                    align: 'end',
-                    labels: {
-                        boxWidth: 10,
-                        usePointStyle: true,
-                        font: { family: "'JetBrains Mono', monospace", size: 9 },
-                        padding: 12
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { borderDash: [2, 2], drawBorder: false },
-                    ticks: { font: { family: "'JetBrains Mono', monospace", size: 9 }, padding: 4 },
-                    border: { display: false }
-                },
-                x: {
-                    grid: { display: false },
-                    ticks: { font: { family: "'Space Grotesk', sans-serif", weight: 'bold', size: 11 } },
-                    border: { display: false }
-                }
-            }
-        }
-    });
+    <div class="pb-2" style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;grid-auto-rows:240px;">
+      <!-- Card 1 -->
+      <div class="card-tech p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-9 h-9 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-folder-open text-electric-blue text-sm"></i></div><span class="font-mono text-xs text-gray-400">01</span></div>
+          <h3 class="font-display text-sm font-bold mb-1 leading-tight">Project Never Discovered</h3>
+          <p class="font-manrope text-xs text-gray-600 leading-snug">Months of work. Zero eyes. The build ships into silence.</p>
+        </div>
+        <div class="pt-2 border-t border-gray-100"><span class="text-[9px] font-mono text-electric-blue">/SILENCE</span></div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card-tech p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-9 h-9 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-user-tie text-electric-blue text-sm"></i></div><span class="font-mono text-xs text-gray-400">02</span></div>
+          <h3 class="font-display text-sm font-bold mb-1 leading-tight">Mentor Never Found</h3>
+          <p class="font-manrope text-xs text-gray-600 leading-snug">No one sees potential. No one guides. Growth stalls.</p>
+        </div>
+        <div class="pt-2 border-t border-gray-100"><span class="text-[9px] font-mono text-electric-blue">/NO_GUIDE</span></div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card-tech p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-9 h-9 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-share-nodes text-electric-blue text-sm"></i></div><span class="font-mono text-xs text-gray-400">03</span></div>
+          <h3 class="font-display text-sm font-bold mb-1 leading-tight">Referral Never Received</h3>
+          <p class="font-manrope text-xs text-gray-600 leading-snug">No reputation. No trust. No one puts their name behind you.</p>
+        </div>
+        <div class="pt-2 border-t border-gray-100"><span class="text-[9px] font-mono text-electric-blue">/NO_TRUST</span></div>
+      </div>
+      <!-- Card 4 -->
+      <div class="card-tech p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-9 h-9 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-paper-plane text-electric-blue text-sm"></i></div><span class="font-mono text-xs text-gray-400">04</span></div>
+          <h3 class="font-display text-sm font-bold mb-1 leading-tight">Internship Never Applied For</h3>
+          <p class="font-manrope text-xs text-gray-600 leading-snug">You never even hear about it. The opportunity never reaches you.</p>
+        </div>
+        <div class="pt-2 border-t border-gray-100"><span class="text-[9px] font-mono text-electric-blue">/MISSED</span></div>
+      </div>
+      <!-- Card 5 - Final -->
+      <div class="card-tech card-final p-4 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-9 h-9 bg-gray-800 flex items-center justify-center border border-gray-700"><i class="fas fa-infinity text-cyan-400 text-sm"></i></div><span class="font-mono text-xs text-gray-500">05</span></div>
+          <h3 class="font-display text-sm font-bold mb-1 leading-tight text-white">Career Changes Forever</h3>
+          <p class="font-manrope text-xs text-gray-300 leading-snug">Not one loss. A different trajectory. A life that unfolds differently.</p>
+        </div>
+        <div class="pt-2 border-t border-gray-800"><span class="text-[9px] font-mono text-cyan-400">/FOREVER</span></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    const ctxDoughnut = document.getElementById('trafficDoughnutChart').getContext('2d');
-    new Chart(ctxDoughnut, {
-        type: 'doughnut',
-        data: {
-            labels: ['Open Source', 'Hackathons', 'Side Projects', 'AI Apps'],
-            datasets: [{
-                data: [28, 22, 32, 18],
-                backgroundColor: ['#0EA5E9', '#6366F1', '#000000', '#CBD5E1'],
-                borderWidth: 0,
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '65%',
-            layout: { padding: { top: 0, bottom: 0, left: 0, right: 0 } },
-            plugins: {
-                legend: {
-                    position: 'right',
-                    labels: {
-                        boxWidth: 8,
-                        usePointStyle: true,
-                        font: { family: "'JetBrains Mono', monospace", size: 9 },
-                        padding: 8
-                    }
-                }
-            }
-        }
-    });
-</script>
+<!-- Bottom statement -->
+<div class="absolute bottom-14 left-0 right-0 px-16 pb-2 z-20">
+  <div class="bg-electric-blue text-white px-8 py-3 flex items-center justify-between" style="box-shadow:6px 6px 0px var(--color-black);">
+    <p class="font-display text-lg font-medium">Invisibility compounds. <span class="font-bold">One missed opportunity creates ten more.</span></p>
+    <p class="font-mono text-xs text-blue-900">// THIS_IS_PSYCHOLOGY</p>
+  </div>
+</div>
+
+<div class="absolute bottom-0 left-0 w-full h-12 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
+  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>COMPOUNDING_INVISIBILITY</div>
+  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">07</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
+</div>
+</div>
 </body>
 </html>

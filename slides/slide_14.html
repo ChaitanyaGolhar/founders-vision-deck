@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>v2.0 — Slide 14 — Our Principles</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--color-primary:#0EA5E9;--color-secondary:#6366F1;--color-accent:#22D3EE;--color-black:#000000;--color-light:#F8FAFC;}
+body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFFF;color:var(--color-black);}
+.font-display{font-family:'Space Grotesk',sans-serif;}.font-mono{font-family:'JetBrains Mono',monospace;}
+.slide-container{width:1280px;height:720px;position:relative;overflow:hidden;background-color:#FFFFFF;display:flex;flex-direction:column;}
+.grid-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.vertical-rl{writing-mode:vertical-rl;transform:rotate(180deg);}
+.corner-marker{position:absolute;width:12px;height:12px;border:2px solid var(--color-black);z-index:20;}
+.corner-tl{top:24px;left:24px;border-right:none;border-bottom:none;}.corner-tr{top:24px;right:24px;border-left:none;border-bottom:none;}
+.corner-bl{bottom:24px;left:24px;border-right:none;border-top:none;}.corner-br{bottom:24px;right:24px;border-left:none;border-top:none;}
+.text-electric-blue{color:var(--color-primary);}.bg-electric-blue{background-color:var(--color-primary);}
+.card-tech{background-color:#FFFFFF;border:1px solid var(--color-black);box-shadow:6px 6px 0px var(--color-black);position:relative;overflow:hidden;}
+.card-tech::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background-color:var(--color-primary);}
+.card-new{background-color:#1E293B!important;color:white;border-color:#1E293B!important;}
+.card-new::before{background-color:var(--color-accent)!important;}
+</style>
+</head>
+<body>
+<div class="slide-container">
+<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern height="64" id="smallGrid" patternUnits="userSpaceOnUse" width="64"><path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"/></pattern></defs><rect fill="url(#smallGrid)" height="100%" width="100%"/></svg>
+<div class="corner-marker corner-tl"></div><div class="corner-marker corner-tr"></div><div class="corner-marker corner-bl"></div><div class="corner-marker corner-br"></div>
+
+<div class="absolute top-0 left-0 w-full px-16 py-10 z-20 flex justify-between items-center">
+  <div class="flex items-center"><div class="w-5 h-5 bg-black mr-3"></div><p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision <span class="text-electric-blue">v2.0</span></p></div>
+  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>ACT_05 — WHO WE ARE</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">NON-NEGOTIABLES</span></div>
+</div>
+
+<div class="relative z-10 flex flex-1 px-16 pt-24 pb-16">
+  <div class="w-1/12 flex justify-center h-full relative">
+    <div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
+    <h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right:-2rem;">PRINCIPLES</h2>
+    <div class="absolute right-[-2px] top-32 w-1 h-16 bg-electric-blue"></div>
+  </div>
+  <div class="w-11/12 pl-12 flex flex-col justify-center">
+    <div class="mb-5 pl-2">
+      <p class="font-display text-xl font-medium leading-tight mb-0.5">Our principles. Our non-negotiables.</p>
+      <p class="font-manrope text-sm text-gray-500">If a feature doesn't serve meaningful recognition, we don't build it.</p>
+    </div>
+
+    <div class="pb-2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-rows:200px;">
+      <!-- 01 -->
+      <div class="card-tech p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-10 h-10 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-chart-line text-electric-blue"></i></div><span class="font-mono text-xs text-gray-400">01</span></div>
+          <h3 class="font-display text-base font-bold mb-1">Career Outcomes<br/>Over Engagement</h3>
+        </div>
+        <p class="font-mono text-[10px] text-gray-400">// NOT_VANITY_METRICS</p>
+      </div>
+      <!-- 02 -->
+      <div class="card-tech p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-10 h-10 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-shield-halved text-electric-blue"></i></div><span class="font-mono text-xs text-gray-400">02</span></div>
+          <h3 class="font-display text-base font-bold mb-1">Trust Before<br/>Growth</h3>
+        </div>
+        <p class="font-mono text-[10px] text-gray-400">// EARNED_NOT_BOUGHT</p>
+      </div>
+      <!-- 03 -->
+      <div class="card-tech p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-10 h-10 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-fingerprint text-electric-blue"></i></div><span class="font-mono text-xs text-gray-400">03</span></div>
+          <h3 class="font-display text-base font-bold mb-1">Evidence<br/>Over Resumes</h3>
+        </div>
+        <p class="font-mono text-[10px] text-gray-400">// SHOW_DONT_TELL</p>
+      </div>
+      <!-- 04 -->
+      <div class="card-tech p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-10 h-10 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-users text-electric-blue"></i></div><span class="font-mono text-xs text-gray-400">04</span></div>
+          <h3 class="font-display text-base font-bold mb-1">Community<br/>Before Virality</h3>
+        </div>
+        <p class="font-mono text-[10px] text-gray-400">// DEPTH_OVER_REACH</p>
+      </div>
+      <!-- 05 -->
+      <div class="card-tech p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-10 h-10 bg-gray-50 flex items-center justify-center border border-gray-200"><i class="fas fa-hourglass-half text-electric-blue"></i></div><span class="font-mono text-xs text-gray-400">05</span></div>
+          <h3 class="font-display text-base font-bold mb-1">Long-term Reputation<br/>Over Attention</h3>
+        </div>
+        <p class="font-mono text-[10px] text-gray-400">// COMPOUND_NOT_BURN</p>
+      </div>
+      <!-- 06 - NEW -->
+      <div class="card-tech card-new p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-3"><div class="w-10 h-10 bg-gray-800 flex items-center justify-center border border-gray-700"><i class="fas fa-magnifying-glass text-cyan-400"></i></div><span class="font-mono text-xs text-cyan-400 font-bold">06 — NEW</span></div>
+          <h3 class="font-display text-base font-bold mb-1 text-white">Truth Before<br/>Assumptions</h3>
+        </div>
+        <p class="font-mono text-[10px] text-cyan-400">// FROM_INTERVIEW_PHILOSOPHY</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="absolute bottom-0 left-0 w-full h-14 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
+  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>SIX_PRINCIPLES — COMPANY_CULTURE</div>
+  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">14</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
+</div>
+</div>
+</body>
+</html>

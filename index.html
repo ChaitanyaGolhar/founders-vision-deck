@@ -24,16 +24,19 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 30px);
+      position: relative;
     }
     
     .slide-frame-wrapper {
-      width: 1920px;
-      height: 1080px;
+      width: 1280px;
+      height: 720px;
       transform-origin: center center;
       background: white; 
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
       transition: opacity 0.2s ease;
+      overflow: hidden;
+      position: relative;
     }
     
     iframe {
@@ -41,6 +44,7 @@
       height: 100%;
       border: none;
       overflow: hidden;
+      display: block;
     }
     
     .loading { opacity: 0.4; }
@@ -50,8 +54,6 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      
-      /* FIX 1: Guarantees the giant 1920x1080 bounding box won't cover these buttons */
       position: relative; 
       z-index: 100; 
     }
@@ -83,6 +85,20 @@
       color: rgba(255, 255, 255, 0.6);
       letter-spacing: 2px;
     }
+
+    body.fullscreen-mode {
+      background: #000;
+      overflow: hidden;
+    }
+
+    body.fullscreen-mode .stage {
+      height: 100vh;
+      padding: 0;
+    }
+
+    body.fullscreen-mode .controls {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -95,11 +111,12 @@
 
   <div class="controls">
     <button id="prevBtn" onclick="prevSlide()">← Prev</button>
-    <div class="counter"><span id="currentNum">1</span> / <span id="totalNum">8</span></div>
+    <div class="counter"><span id="currentNum">1</span> / <span id="totalNum">18</span></div>
     <button id="nextBtn" onclick="nextSlide()">Next →</button>
   </div>
 
   <script>
+    // Updated to include all 18 of your v2 slides
     const slides = [
       'slides/slide_01.html',
       'slides/slide_02.html',
@@ -108,7 +125,17 @@
       'slides/slide_05.html',
       'slides/slide_06.html',
       'slides/slide_07.html',
-      'slides/slide_08.html'
+      'slides/slide_08.html',
+      'slides/slide_09.html',
+      'slides/slide_10.html',
+      'slides/slide_11.html',
+      'slides/slide_12.html',
+      'slides/slide_13.html',
+      'slides/slide_14.html',
+      'slides/slide_15.html',
+      'slides/slide_16.html',
+      'slides/slide_17.html',
+      'slides/slide_18.html'
     ];
 
     let currentSlide = 0;
@@ -123,7 +150,6 @@
     let touchStartX = 0;
     let touchEndX = 0;
 
-    // FIX 2: Extracted keyboard logic into a standalone function
     function handleKeydown(e) {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
         e.preventDefault(); nextSlide();
@@ -138,7 +164,6 @@
       }
     }
 
-    // Main window listens for keyboard
     document.addEventListener('keydown', handleKeydown);
 
     function goToSlide(index) {
@@ -154,7 +179,6 @@
         try {
           const iframeDoc = frame.contentDocument || frame.contentWindow.document;
           
-          // Inject swipe listeners
           iframeDoc.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
           }, { passive: true });
@@ -166,8 +190,6 @@
             if (touchEndX > touchStartX + swipeThreshold) prevSlide();
           }, { passive: true });
           
-          // FIX 3: Inject keyboard listener directly into the slide 
-          // so it catches key presses even when the slide has focus
           iframeDoc.addEventListener('keydown', handleKeydown);
           
           frame.focus(); 
@@ -185,13 +207,19 @@
     function prevSlide() { goToSlide(currentSlide - 1); }
 
     function scaleFrame() {
-      const availW = window.innerWidth - 40; 
-      const availH = window.innerHeight - 90; 
-      const scale = Math.min(availW / 1280, availH / 720, 1);
-      frameWrapper.style.transform = `scale(${scale})`;
+      const isFullscreen = Boolean(document.fullscreenElement);
+      const paddingX = isFullscreen ? 0 : 40;
+      const paddingY = isFullscreen ? 0 : 80;
+      const availW = window.innerWidth - paddingX;
+      const availH = window.innerHeight - paddingY;
+      const scale = Math.min(availW / 1280, availH / 720);
+      const finalScale = Math.min(scale, 2.2);
+      frameWrapper.style.transform = `scale(${finalScale})`;
+      document.body.classList.toggle('fullscreen-mode', isFullscreen);
     }
 
     window.addEventListener('resize', scaleFrame);
+    document.addEventListener('fullscreenchange', scaleFrame);
     
     scaleFrame();
     goToSlide(0);

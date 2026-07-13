@@ -3,251 +3,59 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fragmented Communities - Scattered Tools</title>
+<title>v2.0 — Slide 4 — The Lie We've Accepted</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-        :root {
-            --color-primary: #0EA5E9;
-            --color-secondary: #6366F1;
-            --color-accent: #22D3EE;
-            --color-black: #000000;
-            --color-dark: #0F172A;
-            --color-light: #F8FAFC;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Manrope', sans-serif;
-            background-color: #FFFFFF;
-            color: var(--color-black);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            position: relative;
-            overflow: hidden;
-            background-color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-        }
-        .grid-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .shadow-hard {
-            box-shadow: 8px 8px 0px var(--color-black);
-            transition: transform 0.2s ease-in-out;
-        }
-        .vertical-rl {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-        }
-        .corner-marker {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--color-black);
-            z-index: 20;
-        }
-        .corner-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
-        .corner-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
-        .corner-bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
-        .corner-br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
-        .text-electric-blue { color: var(--color-primary); }
-        .bg-electric-blue { background-color: var(--color-primary); }
-        .border-electric-blue { border-color: var(--color-primary); }
-        .project-card {
-            background: white;
-            border: 2px solid black;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .icon-box {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-light);
-            border: 1px solid var(--color-black);
-        }
-    </style>
+:root{--color-primary:#0EA5E9;--color-secondary:#6366F1;--color-accent:#22D3EE;--color-black:#000000;}
+body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFFF;color:var(--color-black);}
+.font-display{font-family:'Space Grotesk',sans-serif;}.font-mono{font-family:'JetBrains Mono',monospace;}
+.slide-container{width:1280px;height:720px;position:relative;overflow:hidden;background-color:#FFFFFF;display:flex;flex-direction:column;}
+.grid-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.corner-marker{position:absolute;width:12px;height:12px;border:2px solid var(--color-black);z-index:20;}
+.corner-tl{top:24px;left:24px;border-right:none;border-bottom:none;}.corner-tr{top:24px;right:24px;border-left:none;border-bottom:none;}
+.corner-bl{bottom:24px;left:24px;border-right:none;border-top:none;}.corner-br{bottom:24px;right:24px;border-left:none;border-top:none;}
+.text-electric-blue{color:var(--color-primary);}.bg-electric-blue{background-color:var(--color-primary);}
+</style>
 </head>
 <body>
 <div class="slide-container">
-<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="64" id="smallGrid" patternunits="userSpaceOnUse" width="64">
-<path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"></path>
-</pattern>
-</defs>
-<rect fill="url(#smallGrid)" height="100%" width="100%"></rect>
-</svg>
-<div class="corner-marker corner-tl"></div>
-<div class="corner-marker corner-tr"></div>
-<div class="corner-marker corner-bl"></div>
-<div class="corner-marker corner-br"></div>
-<div class="absolute top-0 left-0 w-full px-16 py-12 z-20 flex justify-between items-center">
-<div class="flex items-center">
-<div class="w-5 h-5 bg-black mr-3"></div>
-<p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision</p>
+<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern height="64" id="smallGrid" patternUnits="userSpaceOnUse" width="64"><path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"/></pattern></defs><rect fill="url(#smallGrid)" height="100%" width="100%"/></svg>
+<div class="corner-marker corner-tl"></div><div class="corner-marker corner-tr"></div><div class="corner-marker corner-bl"></div><div class="corner-marker corner-br"></div>
+
+<div class="absolute top-0 left-0 w-full px-16 py-10 z-20 flex justify-between items-center">
+  <div class="flex items-center"><div class="w-5 h-5 bg-black mr-3"></div><p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision <span class="text-electric-blue">v2.0</span></p></div>
+  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>ACT_01 — THE WORLD WE LIVE IN</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">EMOTION: FRUSTRATION</span></div>
 </div>
-<div class="flex items-center space-x-2">
-<div class="h-1 w-2 bg-gray-300"></div>
-<div class="h-1 w-2 bg-gray-300"></div>
-<div class="h-1 w-8 bg-black"></div>
-<div class="h-1 w-2 bg-gray-300"></div>
-<div class="h-1 w-2 bg-gray-300"></div>
+
+<div class="relative z-10 flex flex-1 flex-col items-center justify-center px-20 text-center">
+  <p class="font-mono text-xs text-electric-blue tracking-[0.3em] uppercase mb-8">&gt; the_manifesto.init()</p>
+
+  <h1 class="font-display text-7xl font-bold leading-none tracking-tight text-black mb-12">THE LIE<br/>WE'VE<br/><span class="text-electric-blue">ACCEPTED</span></h1>
+
+  <div class="w-32 h-1 bg-black mb-12"></div>
+
+  <div class="max-w-3xl space-y-6">
+    <p class="font-manrope text-xl text-gray-700 leading-relaxed">We tell students: <span class="font-bold text-black">Build skills. Build projects. Work hard.</span></p>
+
+    <div class="flex items-center justify-center gap-3">
+      <div class="w-12 h-px bg-gray-300"></div>
+      <p class="font-mono text-sm text-gray-400 uppercase tracking-widest">Then.</p>
+      <div class="w-12 h-px bg-gray-300"></div>
+    </div>
+
+    <p class="font-manrope text-xl text-gray-700 leading-relaxed">But we never build a system that ensures those efforts are <span class="font-bold text-black underline decoration-electric-blue decoration-2 underline-offset-4">actually discovered.</span></p>
+  </div>
+
+  <div class="mt-14 bg-black text-white px-10 py-5" style="box-shadow:8px 8px 0px var(--color-primary);">
+    <p class="font-display text-2xl font-medium">Talent is created. <span class="text-cyan-400">Recognition is accidental.</span></p>
+  </div>
 </div>
-</div>
-<div class="relative z-10 flex flex-1 px-16 pt-28 pb-12">
-<div class="w-1/12 flex justify-center h-full relative">
-<div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
-<h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right: -2rem;">
-                &nbsp;&nbsp;    FRAGMENTED TOOLS
-                </h2>
-<div class="absolute right-[-2px] top-32 w-1 h-16 bg-electric-blue"></div>
-</div>
-<div class="w-11/12 pl-12 flex flex-col justify-center">
-<div class="mb-4 pl-2 max-w-3xl">
-<p class="font-display text-lg font-medium leading-tight mb-0.5">
-                    No single source of truth. Everything scattered.
-                </p>
-<p class="font-manrope text-sm text-gray-500">
-                    Students live across seven disconnected platforms—and none of them tell the whole story.
-                </p>
-</div>
-<div class="pb-4" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; grid-auto-rows: 180px;">
-<div class="project-card p-5 shadow-hard relative overflow-hidden group">
-<div class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs">CHAT</div>
-<div class="flex justify-between items-start mb-4">
-<span class="font-mono text-3xl font-bold text-electric-blue opacity-50">01</span>
-<div class="icon-box">
-<i class="fab fa-whatsapp text-sm"></i>
-</div>
-</div>
-<div>
-<h3 class="font-display text-xl font-bold mb-2">WhatsApp</h3>
-<p class="font-manrope text-sm text-gray-600 leading-relaxed">Group chats where opportunities get buried under forwarded memes within hours.</p>
-</div>
-<div class="mt-4 pt-4 border-t border-gray-100 flex gap-2">
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Noisy</span>
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Ephemeral</span>
-</div>
-</div>
-<div class="project-card p-5 shadow-hard relative overflow-hidden group">
-<div class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs">CHAT</div>
-<div class="flex justify-between items-start mb-4">
-<span class="font-mono text-3xl font-bold text-electric-blue opacity-50">02</span>
-<div class="icon-box">
-<i class="fab fa-telegram text-sm"></i>
-</div>
-</div>
-<div>
-<h3 class="font-display text-xl font-bold mb-2">Telegram</h3>
-<p class="font-manrope text-sm text-gray-600 leading-relaxed">Channels that scale noise, not signal. Broadcasts no one reads in full.</p>
-</div>
-<div class="mt-4 pt-4 border-t border-gray-100 flex gap-2">
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Broadcast</span>
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Impersonal</span>
-</div>
-</div>
-<div class="project-card p-5 shadow-hard relative overflow-hidden group">
-<div class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs">COMMUNITY</div>
-<div class="flex justify-between items-start mb-4">
-<span class="font-mono text-3xl font-bold text-electric-blue opacity-50">03</span>
-<div class="icon-box">
-<i class="fab fa-discord text-sm"></i>
-</div>
-</div>
-<div>
-<h3 class="font-display text-xl font-bold mb-2">Discord</h3>
-<p class="font-manrope text-sm text-gray-600 leading-relaxed">Servers full of strangers, not peers. Identity is a username, not a reputation.</p>
-</div>
-<div class="mt-4 pt-4 border-t border-gray-100 flex gap-2">
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Anonymous</span>
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Unverified</span>
-</div>
-</div>
-<div class="project-card p-5 shadow-hard relative overflow-hidden group">
-<div class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs">PROFESSIONAL</div>
-<div class="flex justify-between items-start mb-4">
-<span class="font-mono text-3xl font-bold text-electric-blue opacity-50">04</span>
-<div class="icon-box">
-<i class="fab fa-linkedin text-sm"></i>
-</div>
-</div>
-<div>
-<h3 class="font-display text-xl font-bold mb-2">LinkedIn</h3>
-<p class="font-manrope text-sm text-gray-600 leading-relaxed">Polished profiles with no proof. Credentials claimed, work rarely demonstrated.</p>
-</div>
-<div class="mt-4 pt-4 border-t border-gray-100 flex gap-2">
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Performative</span>
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Unverified</span>
-</div>
-</div>
-<div class="project-card p-5 shadow-hard relative overflow-hidden group">
-<div class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs">FORMAL</div>
-<div class="flex justify-between items-start mb-4">
-<span class="font-mono text-3xl font-bold text-electric-blue opacity-50">05</span>
-<div class="icon-box">
-<i class="fas fa-envelope text-sm"></i>
-</div>
-</div>
-<div>
-<h3 class="font-display text-xl font-bold mb-2">Email</h3>
-<p class="font-manrope text-sm text-gray-600 leading-relaxed">Notice-board blasts no one opens. Official channels with zero engagement.</p>
-</div>
-<div class="mt-4 pt-4 border-t border-gray-100 flex gap-2">
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Ignored</span>
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">One-way</span>
-</div>
-</div>
-<div class="project-card p-5 shadow-hard relative overflow-hidden group">
-<div class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs">LEGACY</div>
-<div class="flex justify-between items-start mb-4">
-<span class="font-mono text-3xl font-bold text-electric-blue opacity-50">06</span>
-<div class="icon-box">
-<i class="fas fa-thumbtack text-sm"></i>
-</div>
-</div>
-<div>
-<h3 class="font-display text-xl font-bold mb-2">Notice Board</h3>
-<p class="font-manrope text-sm text-gray-600 leading-relaxed">Physical flyers in a digital world. Information that expires before it's seen.</p>
-</div>
-<div class="mt-4 pt-4 border-t border-gray-100 flex gap-2">
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Analog</span>
-<span class="text-xs font-mono bg-gray-100 px-2 py-1">Invisible</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="absolute bottom-0 left-0 w-full h-16 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
-<div class="font-mono text-xs text-gray-400">
-<span class="text-electric-blue mr-2">●</span>
-                FRAGMENTED_SYSTEMS — NO SOURCE OF TRUTH
-            </div>
-<div class="flex items-center">
-<p class="font-mono text-lg font-bold mr-4">04</p>
-<div class="w-12 h-1 bg-gray-200">
-<div class="h-full w-5/8 bg-black" style="width: 62.5%"></div>
-</div>
-</div>
+
+<div class="absolute bottom-0 left-0 w-full h-14 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
+  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>THE_LIE_WE_ACCEPTED — ONE OF THE MOST MEMORABLE SLIDES</div>
+  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">04</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
 </div>
 </div>
 </body>

@@ -3,213 +3,79 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Invisible Student - Timeline</title>
+<title>v2.0 — Slide 3 — The Cost of Invisibility</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-        :root {
-            --color-primary: #0EA5E9;
-            --color-secondary: #6366F1;
-            --color-accent: #22D3EE;
-            --color-black: #000000;
-            --color-dark: #0F172A;
-            --color-light: #F8FAFC;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Manrope', sans-serif;
-            background-color: #FFFFFF;
-            color: var(--color-black);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            position: relative;
-            overflow: hidden;
-            background-color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-        }
-        .grid-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .shadow-hard {
-            box-shadow: 8px 8px 0px var(--color-black);
-        }
-        .vertical-rl {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-        }
-        .corner-marker {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--color-black);
-            z-index: 20;
-        }
-        .corner-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
-        .corner-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
-        .corner-bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
-        .corner-br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
-        .process-item {
-            position: relative;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        .process-number {
-            background-color: #FFFFFF;
-            border: 2px solid var(--color-black);
-            color: var(--color-black);
-        }
-        .process-item:hover .process-number {
-            background-color: var(--color-primary);
-            color: #FFFFFF;
-            border-color: var(--color-primary);
-        }
-        .process-card {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            transition: all 0.2s ease;
-        }
-        .process-item:hover .process-card {
-            border-color: var(--color-black);
-            box-shadow: 4px 4px 0px var(--color-primary);
-            transform: translateX(4px);
-        }
-        .process-number-final {
-            background-color: #1E293B !important;
-            color: #FFFFFF !important;
-            border-color: #1E293B !important;
-        }
-        .text-electric-blue { color: var(--color-primary); }
-        .bg-electric-blue { background-color: var(--color-primary); }
-        .border-electric-blue { border-color: var(--color-primary); }
-    </style>
+:root{--color-primary:#0EA5E9;--color-secondary:#6366F1;--color-accent:#22D3EE;--color-black:#000000;}
+body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFFF;color:var(--color-black);}
+.font-display{font-family:'Space Grotesk',sans-serif;}.font-mono{font-family:'JetBrains Mono',monospace;}
+.slide-container{width:1280px;height:720px;position:relative;overflow:hidden;background-color:#FFFFFF;display:flex;flex-direction:column;}
+.grid-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.vertical-rl{writing-mode:vertical-rl;transform:rotate(180deg);}
+.corner-marker{position:absolute;width:12px;height:12px;border:2px solid var(--color-black);z-index:20;}
+.corner-tl{top:24px;left:24px;border-right:none;border-bottom:none;}.corner-tr{top:24px;right:24px;border-left:none;border-bottom:none;}
+.corner-bl{bottom:24px;left:24px;border-right:none;border-top:none;}.corner-br{bottom:24px;right:24px;border-left:none;border-top:none;}
+.process-item{position:relative;z-index:10;transition:all 0.3s ease;}
+.process-number{background-color:#FFFFFF;border:2px solid var(--color-black);color:var(--color-black);}
+.process-item:hover .process-number{background-color:var(--color-primary);color:#FFFFFF;border-color:var(--color-primary);}
+.process-card{background:#FFFFFF;border:1px solid #E2E8F0;transition:all 0.2s ease;}
+.process-number-final{background-color:#1E293B!important;color:#FFFFFF!important;border-color:#1E293B!important;}
+.text-electric-blue{color:var(--color-primary);}.bg-electric-blue{background-color:var(--color-primary);}
+</style>
 </head>
 <body>
 <div class="slide-container">
-<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="64" id="smallGrid" patternunits="userSpaceOnUse" width="64">
-<path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"></path>
-</pattern>
-</defs>
-<rect fill="url(#smallGrid)" height="100%" width="100%"></rect>
-</svg>
-<div class="corner-marker corner-tl"></div>
-<div class="corner-marker corner-tr"></div>
-<div class="corner-marker corner-bl"></div>
-<div class="corner-marker corner-br"></div>
+<svg class="grid-lines" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern height="64" id="smallGrid" patternUnits="userSpaceOnUse" width="64"><path d="M 64 0 L 0 0 0 64" fill="none" stroke="#F1F5F9" stroke-width="1"/></pattern></defs><rect fill="url(#smallGrid)" height="100%" width="100%"/></svg>
+<div class="corner-marker corner-tl"></div><div class="corner-marker corner-tr"></div><div class="corner-marker corner-bl"></div><div class="corner-marker corner-br"></div>
+
 <div class="absolute top-0 left-0 w-full px-16 py-12 z-20 flex justify-between items-center">
-<div class="flex items-center">
-<div class="w-5 h-5 bg-black mr-3"></div>
-<p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision</p>
+  <div class="flex items-center"><div class="w-5 h-5 bg-black mr-3"></div><p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision <span class="text-electric-blue">v2.0</span></p></div>
+  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>EMOTION: LOSS</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">ACT_01 — THE COST</span></div>
 </div>
-<div class="flex items-center space-x-4 font-mono text-xs text-gray-400">
-<span>STATUS: INVISIBLE</span>
-<div class="h-4 w-px bg-gray-300"></div>
-<span class="text-electric-blue">ACT_02 — WHY IT'S BROKEN</span>
+
+<div class="relative z-10 flex flex-1 px-16 pt-16 pb-3">
+  <div class="w-1/12 flex justify-center h-full relative">
+    <div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
+    <h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right:-2rem;">COST OF INVISIBILITY</h2>
+    <div class="absolute right-[-2px] top-20 w-1 h-16 bg-electric-blue"></div>
+  </div>
+  <div class="w-11/12 pl-20 flex flex-col justify-start relative">
+    <div class="absolute left-20 top-4 bottom-2 w-px bg-gray-200"></div>
+    <div class="space-y-1">
+      <div class="process-item flex items-center group">
+        <div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5">01</div>
+        <div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white"><div class="flex justify-between items-baseline"><h3 class="font-display text-base font-bold text-black">First Year</h3><span class="font-mono text-xs text-electric-blue">/ENTER</span></div><p class="font-manrope text-xs text-gray-600">Enters college with curiosity, ambition, and untapped potential</p></div>
+      </div>
+      <div class="process-item flex items-center group">
+        <div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5">02</div>
+        <div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white"><div class="flex justify-between items-baseline"><h3 class="font-display text-base font-bold text-black">Learns Daily</h3><span class="font-mono text-xs text-electric-blue">/BUILD</span></div><p class="font-manrope text-xs text-gray-600">Builds skills, ships side projects, explores new interests</p></div>
+      </div>
+      <div class="process-item flex items-center group">
+        <div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5">03</div>
+        <div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white"><div class="flex justify-between items-baseline"><h3 class="font-display text-base font-bold text-black">Wins Hackathons</h3><span class="font-mono text-xs text-electric-blue">/PROVE</span></div><p class="font-manrope text-xs text-gray-600">Earns recognition—but only inside isolated, temporary bubbles</p></div>
+      </div>
+      <div class="process-item flex items-center group">
+        <div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5">04</div>
+        <div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white"><div class="flex justify-between items-baseline"><h3 class="font-display text-base font-bold text-black">Gets Certifications</h3><span class="font-mono text-xs text-electric-blue">/STACK</span></div><p class="font-manrope text-xs text-gray-600">Stacks credentials that sit in a PDF nobody ever opens</p></div>
+      </div>
+      <div class="process-item flex items-center group">
+        <div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number process-number-final mr-5">05</div>
+        <div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-gray-50"><div class="flex justify-between items-baseline"><h3 class="font-display text-base font-bold text-black">Graduates — Starts From Zero Again</h3><span class="font-mono text-xs text-red-500 font-bold">/REBUILD</span></div><p class="font-manrope text-xs text-gray-700 font-medium">Four years of growth. Zero years of recognition. Rebuilds reputation from scratch.</p></div>
+      </div>
+    </div>
+    <!-- Quote bar (in flow, not absolute) -->
+    <div class="mt-3 bg-black text-white px-6 py-2.5 flex items-center justify-between" style="box-shadow:6px 6px 0px var(--color-primary);">
+      <p class="font-display text-sm italic">"Four years of growth. Zero years of recognition."</p>
+      <p class="font-mono text-xs text-cyan-400">— THE COST OF INVISIBILITY</p>
+    </div>
+  </div>
 </div>
-</div>
-<div class="relative z-10 flex flex-1 px-16 pt-28 pb-12">
-<div class="w-1/12 flex justify-center h-full relative">
-<div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
-<h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right: -2rem;">
-                  &nbsp;&nbsp;  INVISIBLE STUDENT
-                </h2>
-<div class="absolute right-[-2px] top-32 w-1 h-16 bg-electric-blue"></div>
-</div>
-<div class="w-11/12 pl-20 flex flex-col justify-start relative pt-4">
-<div class="absolute left-20 top-8 bottom-4 w-px bg-gray-200"></div>
-<div class="space-y-2">
-<div class="process-item flex items-center group">
-<div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5 bg-white border-2 border-black transition-colors duration-300 group-hover:bg-electric-blue group-hover:text-white group-hover:border-electric-blue">
-                            01
-                        </div>
-<div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white">
-<div class="flex justify-between items-baseline">
-<h3 class="font-display text-base font-bold text-black">First Year</h3>
-<span class="font-mono text-xs text-electric-blue opacity-0 group-hover:opacity-100 transition-opacity">/ENTER</span>
-</div>
-<p class="font-manrope text-xs text-gray-600">Enters college with curiosity, ambition, and untapped potential</p>
-</div>
-</div>
-<div class="process-item flex items-center group">
-<div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5 bg-white border-2 border-black transition-colors duration-300 group-hover:bg-electric-blue group-hover:text-white group-hover:border-electric-blue">
-                            02
-                        </div>
-<div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white">
-<div class="flex justify-between items-baseline">
-<h3 class="font-display text-base font-bold text-black">Learns Daily</h3>
-<span class="font-mono text-xs text-electric-blue opacity-0 group-hover:opacity-100 transition-opacity">/BUILD</span>
-</div>
-<p class="font-manrope text-xs text-gray-600">Builds skills, ships side projects, explores new interests</p>
-</div>
-</div>
-<div class="process-item flex items-center group">
-<div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5 bg-white border-2 border-black transition-colors duration-300 group-hover:bg-electric-blue group-hover:text-white group-hover:border-electric-blue">
-                            03
-                        </div>
-<div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white">
-<div class="flex justify-between items-baseline">
-<h3 class="font-display text-base font-bold text-black">Wins Hackathons</h3>
-<span class="font-mono text-xs text-electric-blue opacity-0 group-hover:opacity-100 transition-opacity">/PROVE</span>
-</div>
-<p class="font-manrope text-xs text-gray-600">Earns recognition—but only inside isolated, temporary bubbles</p>
-</div>
-</div>
-<div class="process-item flex items-center group">
-<div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number mr-5 bg-white border-2 border-black transition-colors duration-300 group-hover:bg-electric-blue group-hover:text-white group-hover:border-electric-blue">
-                            04
-                        </div>
-<div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-white">
-<div class="flex justify-between items-baseline">
-<h3 class="font-display text-base font-bold text-black">Gets Certifications</h3>
-<span class="font-mono text-xs text-electric-blue opacity-0 group-hover:opacity-100 transition-opacity">/STACK</span>
-</div>
-<p class="font-manrope text-xs text-gray-600">Stacks credentials that sit in a PDF nobody ever opens</p>
-</div>
-</div>
-<div class="process-item flex items-center group">
-<div class="relative z-10 w-10 h-10 flex items-center justify-center font-mono font-bold text-sm process-number process-number-final mr-5">
-                            05
-                        </div>
-<div class="flex-1 process-card p-2.5 pl-4 border border-gray-200 bg-gray-50">
-<div class="flex justify-between items-baseline">
-<h3 class="font-display text-base font-bold text-black">Graduates — Nobody Knows</h3>
-<span class="font-mono text-xs text-red-500 font-bold">/INVISIBLE</span>
-</div>
-<p class="font-manrope text-xs text-gray-700 font-medium">Despite everything built, won, and earned—remains invisible to opportunity</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="absolute bottom-0 left-0 w-full h-16 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
-<div class="font-mono text-xs text-gray-400">
-<span class="text-electric-blue mr-2">●</span>
-                INVISIBILITY_TIMELINE
-            </div>
-<div class="flex items-center">
-<p class="font-mono text-lg font-bold mr-4">03</p>
-<div class="w-12 h-1 bg-gray-200">
-<div class="h-full w-1/2 bg-black"></div>
-</div>
-</div>
+
+<div class="absolute bottom-0 left-0 w-full h-12 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
+  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>INVISIBILITY_TIMELINE_V2</div>
+  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">03</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
 </div>
 </div>
 </body>

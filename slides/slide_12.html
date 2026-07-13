@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>v2.0 — Slide 8 — The Insight</title>
+<title>v2.0 — Slide 12 — Why We Care</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -13,6 +13,7 @@ body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFF
 .font-display{font-family:'Space Grotesk',sans-serif;}.font-mono{font-family:'JetBrains Mono',monospace;}
 .slide-container{width:1280px;height:720px;position:relative;overflow:hidden;background-color:#FFFFFF;display:flex;flex-direction:column;}
 .grid-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.vertical-rl{writing-mode:vertical-rl;transform:rotate(180deg);}
 .corner-marker{position:absolute;width:12px;height:12px;border:2px solid var(--color-black);z-index:20;}
 .corner-tl{top:24px;left:24px;border-right:none;border-bottom:none;}.corner-tr{top:24px;right:24px;border-left:none;border-bottom:none;}
 .corner-bl{bottom:24px;left:24px;border-right:none;border-top:none;}.corner-br{bottom:24px;right:24px;border-left:none;border-top:none;}
@@ -26,28 +27,43 @@ body{margin:0;padding:0;font-family:'Manrope',sans-serif;background-color:#FFFFF
 
 <div class="absolute top-0 left-0 w-full px-16 py-10 z-20 flex justify-between items-center">
   <div class="flex items-center"><div class="w-5 h-5 bg-black mr-3"></div><p class="font-mono text-xs tracking-widest font-bold text-black uppercase">Founder Vision <span class="text-electric-blue">v2.0</span></p></div>
-  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>ACT_03 — THE INSIGHT</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">EMOTION: REALIZATION</span></div>
+  <div class="flex items-center space-x-4 font-mono text-xs text-gray-400"><span>ACT_05 — WHO WE ARE</span><div class="h-4 w-px bg-gray-300"></div><span class="text-electric-blue">FOUNDER STORY</span></div>
 </div>
 
-<div class="relative z-10 flex flex-1 flex-col items-center justify-center px-20 text-center">
-  <p class="font-mono text-xs text-electric-blue tracking-[0.3em] uppercase mb-10">&gt; the_insight.reveal()</p>
+<div class="relative z-10 flex flex-1 px-16 pt-24 pb-16">
+  <div class="w-1/12 flex justify-center h-full relative">
+    <div class="h-full border-r border-gray-200 absolute right-0 top-0"></div>
+    <h2 class="vertical-rl font-display font-bold text-6xl tracking-tight text-black opacity-10 whitespace-nowrap" style="margin-right:-2rem;">WHY WE CARE</h2>
+    <div class="absolute right-[-2px] top-32 w-1 h-16 bg-electric-blue"></div>
+  </div>
+  <div class="w-11/12 pl-12 flex flex-col justify-center">
+    <p class="font-mono text-xs text-electric-blue tracking-[0.3em] uppercase mb-4">&gt; founder_story.origin()</p>
+    <h1 class="font-display text-5xl font-bold leading-tight tracking-tight text-black mb-8">WHY <span class="text-electric-blue">WE CARE</span></h1>
 
-  <div class="w-20 h-1 bg-black mb-10"></div>
+    <div class="max-w-3xl space-y-6">
+      <div class="bg-white border-l-4 border-electric-blue pl-6 py-2">
+        <p class="font-display text-2xl font-light leading-relaxed text-black">We didn't start with an app.</p>
+      </div>
 
-  <h1 class="font-display text-6xl font-bold leading-tight tracking-tight text-black mb-10 max-w-5xl">
-    The biggest barrier to student success<br/>
-    isn't <span class="text-gray-300 line-through decoration-red-500 decoration-4">talent.</span><br/>
-    <span class="text-electric-blue">It's visibility.</span>
-  </h1>
+      <div class="bg-white border-l-4 border-black pl-6 py-2">
+        <p class="font-display text-2xl font-light leading-relaxed text-black">We started by watching talented classmates remain invisible while opportunities flowed through personal networks.</p>
+      </div>
 
-  <div class="w-20 h-1 bg-black mb-8"></div>
+      <div class="bg-electric-blue text-white p-6" style="box-shadow:8px 8px 0px var(--color-black);">
+        <p class="font-display text-2xl font-medium leading-relaxed">We realized the problem wasn't a lack of talent.<br/><span class="font-bold">It was a lack of visibility.</span></p>
+      </div>
+    </div>
 
-  <p class="font-mono text-sm text-gray-400 uppercase tracking-widest">// THIS IS OUR FOUNDER BELIEF</p>
+    <div class="mt-8 flex items-center gap-4">
+      <div class="w-12 h-1 bg-black"></div>
+      <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">No startup jargon. Just what we saw.</p>
+    </div>
+  </div>
 </div>
 
 <div class="absolute bottom-0 left-0 w-full h-14 px-16 flex items-center justify-between border-t border-gray-100 z-20 bg-white">
-  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>THE_INSIGHT — NOT_TALENT_VISIBILITY</div>
-  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">08</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
+  <div class="font-mono text-xs text-gray-400"><span class="text-electric-blue mr-2">●</span>FOUNDER_STORY — AUTHENTIC_NOT_PERFORMATIVE</div>
+  <div class="flex items-center"><p class="font-mono text-lg font-bold mr-4">12</p><div class="w-12 h-1 bg-gray-200"><div class="h-full w-full bg-black"></div></div></div>
 </div>
 </div>
 </body>
